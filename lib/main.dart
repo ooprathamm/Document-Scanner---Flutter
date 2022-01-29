@@ -4,7 +4,13 @@ import 'dart:async';
 import 'camera_screen.dart';
 
 
-void main()=>runApp(doc());
+List<CameraDescription> cameras = [];
+
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  cameras=await availableCameras();
+  runApp(doc());
+}
 
 class doc extends StatelessWidget{
   @override
