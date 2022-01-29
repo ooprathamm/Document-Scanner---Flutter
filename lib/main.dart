@@ -1,6 +1,10 @@
+import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
+import 'dart:async';
+import 'camera_screen.dart';
 
-void main() => runApp(doc());
+
+void main()=>runApp(doc());
 
 class doc extends StatelessWidget{
   @override
@@ -26,6 +30,7 @@ class _DocAppState extends State<DocApp> with SingleTickerProviderStateMixin{
   @override
   void initState() {
     super.initState();
+
     controller= AnimationController(vsync: this,duration: Duration(seconds: 2));
     animation=Tween<double>(begin: 0,end: 300).animate(controller);
     animation.addListener(() {
@@ -34,14 +39,18 @@ class _DocAppState extends State<DocApp> with SingleTickerProviderStateMixin{
       });
     });
     controller.forward();
+    Timer(Duration(seconds: 5),
+            ()=>Navigator.pushReplacement(context,
+            MaterialPageRoute(builder: (context)=>camera()))
+    );
   }
   @override
   Widget build(BuildContext context) {
     return Center(
       child: Container(
-        height: animation.value,
-        width: animation.value,
-        child: Image(image: AssetImage("assets/doc.png"),color: Colors.white,)
+          height: animation.value,
+          width: animation.value,
+          child: Image(image: AssetImage("assets/doc.png"),color: Colors.white,)
       ),
     );
   }
