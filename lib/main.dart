@@ -1,59 +1,53 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
-void main()=>runApp(app());
 
-class app extends StatelessWidget{
-  app({Key? key}):super(key: key);
+void main() => runApp(doc());
+
+class doc extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Document Scanner' ,
-      theme: ThemeData(
-        primarySwatch: Colors.grey
-      ),
-      home: _Homepage(),
+      home: DocApp(),
     );
   }
 }
 
-class _Homepage extends StatefulWidget{
+class DocApp extends StatefulWidget {
+  const DocApp({Key? key}) : super(key: key);
+
   @override
-  homestate createState()=>homestate();
+  _DocAppState createState() => _DocAppState();
 }
 
-class homestate extends State<_Homepage>{
-  Animation<double> animation;
-  AnimationController controller;
-  
+class _DocAppState extends State<DocApp> with SingleTickerProviderStateMixin{
+  late Animation<double> animation;
+  late AnimationController controller;
+
   @override
   void initState() {
-    controller=AnimationController(vsync: this,duration: Duration(milliseconds: 2500));
-    animation=Tween<Double>(begin: 0.0,end: 1.0).animate(controller);
+    super.initState();
+    controller= AnimationController(vsync: this,duration: Duration(seconds: 2));
+    animation=Tween<double>(begin: 0,end: 300).animate(controller);
     animation.addListener(() {
-         setState(() {
-           print(animation.value.toString());
-
-         });
+      setState(() {
+        //
+      });
     });
-    animation.addStatusListener((status) {
-       if(status==AnimationStatus.completed){
-         controller.reverse();
-       }
-       else if(status==AnimationStatus.dismissed){
-         controller.forward();
-       }
-    });
+    controller.forward();
   }
-  
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
-        child: Text("TEST"),
+    return Center(
+      child: Container(
+        height: animation.value,
+        width: animation.value,
+        child: Image(image: AssetImage("assets/doc.png"),color: Colors.white,)
       ),
     );
   }
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
 }
-
