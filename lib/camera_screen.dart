@@ -3,59 +3,40 @@ import 'package:document_scanner_flutter/main.dart';
 import 'package:camera/camera.dart';
 import 'main.dart';
 
-class camera extends StatefulWidget{
+
+class CameraApp extends StatefulWidget {
   @override
-  cameraState createState()=>cameraState();
+  _CameraAppState createState() => _CameraAppState();
 }
 
-class cameraState extends State<camera> with WidgetsBindingObserver{
-  CameraController? controller;
-  bool _isCameraInitalized=false;
-  void onNewCameraSelected(CameraDescription cameraDescription) async{
-    final previousCameraController=controller;
+class _CameraAppState extends State<CameraApp> {
+  late CameraController controller;
 
-    final CameraController cameraController=CameraController(cameraDescription,
-        ResolutionPreset.high,
-    imageFormatGroup: ImageFormatGroup.jpeg
-    );
-
-    await previousCameraController?.dispose();
-
-    if(mounted){
-      setState(() {
-        controller=cameraController;
-      });
-    }
-    cameraController.addListener(() {
-      if(mounted){
-        setState(() {
-
-        });
-      }
-    });
-
-    await cameraController.initialize();
-
-    if(mounted){
-      setState(() {
-        _isCameraInitalized=controller!.value.isInitialized;
-      });
-    }
-  }
-  
   @override
   void initState() {
-    onNewCameraSelected(cameras[0]);
     super.initState();
+    controller = CameraController(cameras[0], ResolutionPreset.max);
+    controller.initialize().then((_) {
+      if (!mounted) {
+        return;
+      }
+      setState(() {});
+    });
   }
-  
-  
+
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: _isCameraInitalized?AspectRatio(
-          aspectRatio: 1/controller!.value.aspectRatio,
-      child: controller!.buildPreview()):Container()
+    if (!controller.value.isInitialized) {
+      return Container();
+    }
+    return Container(
+      child: CameraPreview(controller),
     );
   }
 }

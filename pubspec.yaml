@@ -27,7 +27,7 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
-  camera:
+  camera: ^0.9.4+2
   path_provider:
   path:
   opencv: "^1.0.4"

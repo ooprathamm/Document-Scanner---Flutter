@@ -4,32 +4,25 @@ import 'dart:async';
 import 'camera_screen.dart';
 
 
-List<CameraDescription> cameras = [];
+List<CameraDescription> cameras=[] ;
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   cameras=await availableCameras();
-  runApp(doc());
+  runApp(const MaterialApp(
+    debugShowCheckedModeBanner: false,
+    home: _animation(),
+  ));
 }
 
-class doc extends StatelessWidget{
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: DocApp(),
-    );
-  }
-}
-
-class DocApp extends StatefulWidget {
-  const DocApp({Key? key}) : super(key: key);
+class _animation extends StatefulWidget {
+  const _animation({Key? key}) : super(key: key);
 
   @override
-  _DocAppState createState() => _DocAppState();
+  _animationState createState() => _animationState();
 }
 
-class _DocAppState extends State<DocApp> with SingleTickerProviderStateMixin{
+class _animationState extends State<_animation> with SingleTickerProviderStateMixin{
   late Animation<double> animation;
   late AnimationController controller;
 
@@ -46,8 +39,8 @@ class _DocAppState extends State<DocApp> with SingleTickerProviderStateMixin{
     });
     controller.forward();
     Timer(Duration(seconds: 5),
-            ()=>Navigator.pushReplacement(context,
-            MaterialPageRoute(builder: (context)=>camera()))
+            ()=>Navigator.of(context).push(MaterialPageRoute(builder:
+            (BuildContext context) => CameraApp()))
     );
   }
   @override
