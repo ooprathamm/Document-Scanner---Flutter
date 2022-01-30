@@ -156,13 +156,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.7.0"
-  opencv:
-    dependency: "direct main"
-    description:
-      name: opencv
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.0.4"
   path:
     dependency: "direct main"
     description:
@@ -254,6 +247,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.0.1+1"
+  simple_edge_detection:
+    dependency: "direct main"
+    description:
+      path: "C:\\Users\\prath\\Desktop\\Comding\\Project- Android\\flutter-simple-edge-detection"
+      relative: false
+    source: path
+    version: "0.0.1"
   sky_engine:
     dependency: transitive
     description: flutter

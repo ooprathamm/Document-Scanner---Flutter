@@ -30,7 +30,8 @@ dependencies:
   camera: ^0.9.4+2
   path_provider:
   path:
-  opencv: "^1.0.4"
+  simple_edge_detection:
+    path: C:\Users\prath\Desktop\Comding\Project- Android\flutter-simple-edge-detection
   flutter:
     sdk: flutter
 

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:document_scanner_flutter/main.dart';
 import 'package:camera/camera.dart';
 import 'main.dart';
+import 'package:simple_edge_detection/edge_detection.dart';
 
 
 class CameraApp extends StatefulWidget {
