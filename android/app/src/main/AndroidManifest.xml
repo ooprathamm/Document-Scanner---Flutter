@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.document_scanner_flutter">
+    package="com.example.doc_scanner">
    <application
-        android:label="document_scanner_flutter"
+        android:label="doc_scanner"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

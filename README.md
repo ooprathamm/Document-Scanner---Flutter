@@ -1,4 +1,4 @@
-# document_scanner_flutter
+# doc_scanner
 
 A new Flutter project.
 

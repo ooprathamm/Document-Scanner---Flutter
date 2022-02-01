@@ -1,8 +1,7 @@
 import 'package:camera/camera.dart';
+import 'package:doc_scanner/camera_view.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
-import 'camera_screen.dart';
-
 
 List<CameraDescription> cameras=[] ;
 
@@ -59,5 +58,3 @@ class _animationState extends State<_animation> with SingleTickerProviderStateMi
     super.dispose();
   }
 }
-
-

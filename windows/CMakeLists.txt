@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.14)
-project(document_scanner_flutter LANGUAGES CXX)
+project(doc_scanner LANGUAGES CXX)
 
-set(BINARY_NAME "document_scanner_flutter")
+set(BINARY_NAME "doc_scanner")
 
 cmake_policy(SET CMP0063 NEW)
 
