@@ -27,6 +27,8 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  simple_edge_detection:
+    path: 'C:\Users\prath\Desktop\Comding\Project- Android\flutter-simple-edge-detection'
   camera:
   path:
   path_provider:

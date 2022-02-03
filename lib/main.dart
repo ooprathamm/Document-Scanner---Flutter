@@ -1,13 +1,11 @@
 import 'package:camera/camera.dart';
 import 'package:doc_scanner/camera_view.dart';
+import 'package:doc_scanner/scan.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
 
-List<CameraDescription> cameras=[] ;
-
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  cameras=await availableCameras();
   runApp(const MaterialApp(
     debugShowCheckedModeBanner: false,
     home: _animation(),
@@ -39,7 +37,7 @@ class _animationState extends State<_animation> with SingleTickerProviderStateMi
     controller.forward();
     Timer(Duration(seconds: 5),
             ()=>Navigator.of(context).push(MaterialPageRoute(builder:
-            (BuildContext context) => CameraApp()))
+            (BuildContext context) => Scan()))
     );
   }
   @override
